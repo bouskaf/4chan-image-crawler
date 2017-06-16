@@ -31,4 +31,5 @@ cursor = images.find()
 
 for document in cursor:
     print(document)
+    print 'pepa z depa'
 
