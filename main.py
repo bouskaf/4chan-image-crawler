@@ -31,5 +31,5 @@ cursor = images.find()
 
 for document in cursor:
     print(document)
-    print 'pepa z depa'
+    print 'pepa z depa a julie z galerie'
 
