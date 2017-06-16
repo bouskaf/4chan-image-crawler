@@ -6,9 +6,10 @@ client = MongoClient('mongodb://bouskfil:hesloheslo@apka-shard-00-00-hkdto.mongo
 
 db = client.fapka
 images = db.images
+catalog = db.catalog
 
 
-with open('res.json') as json_data:
+with open('result.json') as json_data:
     d = json.load(json_data)
     '''
     for href in d:
@@ -19,7 +20,7 @@ with open('res.json') as json_data:
 
     '''
     print(d)
-    images.insert_many(d)
+    catalog.insert_many(d)
 
 #images.insert_one(image)
 #images.insert_one(image)
@@ -27,9 +28,9 @@ with open('res.json') as json_data:
 #images.delete_many({})
 
 
-cursor = images.find()
+cursor = catalog.find()
 
 for document in cursor:
     print(document)
-    print 'pepa z depa a julie z galerie'
+
 

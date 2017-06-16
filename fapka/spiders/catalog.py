@@ -28,8 +28,12 @@ class ToScrapeCSSSpider(scrapy.Spider):
                                     args={'wait': 0.5},
                                     )
             else:
+                name = thread.css(".teaser b::text").extract_first()
+
                 yield {
-                   'href': 'http:' + thread.css("a::attr(href)").extract_first()
+                    'href': 'http:' + thread.css("a::attr(href)").extract_first(),
+                    'title':  thread.css(".teaser b::text").extract_first(),
+                    'teaser': thread.css(".teaser::text").extract_first()
                 }
 
     def parse_thread(self, response):
