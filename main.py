@@ -19,8 +19,8 @@ with open('result.json') as json_data:
         #images.insert_one(image)
 
     '''
-    print(d)
-    catalog.insert_many(d)
+    #catalog.insert_many(d)
+    images.insert_many(d)
 
 #images.insert_one(image)
 #images.insert_one(image)

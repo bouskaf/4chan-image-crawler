@@ -5,9 +5,9 @@ from scrapy_splash import SplashRequest
 
 
 class ToScrapeCSSSpider(scrapy.Spider):
-    name = "4chan2"
+    name = "4chan_thread"
     start_urls = [
-        'http://boards.4chan.org/s/thread/17526113',
+        'http://boards.4chan.org/s/thread/17515908',
     ]
 
     def start_requests(self):
