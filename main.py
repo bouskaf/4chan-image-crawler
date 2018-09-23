@@ -34,6 +34,6 @@ for document in cursor:
     print(document)
 
 
-print("DSads")
+
 
 
