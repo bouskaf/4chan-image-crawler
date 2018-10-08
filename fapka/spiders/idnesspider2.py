@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from scrapy_splash import SplashRequest
-from fapka.items import FapkaItem
+from bs4 import BeautifulSoup
 
 
 class ToScrapeCSSSpider(scrapy.Spider):
-    name = "4chan_thread"
+    name = "idnes"
     start_urls = [
-        'http://boards.4chan.org/s/thread/18448202',
+        'https://zpravy.idnes.cz/archiv.aspx?strana=%s' % page for page in range(0, 3)
     ]
 
     def start_requests(self):
@@ -18,8 +18,12 @@ class ToScrapeCSSSpider(scrapy.Spider):
                                 )
 
     def parse(self, response):
-        for image in response.css("a.fileThumb"):
-            item = FapkaItem()
-            item['image_urls'] = ['http:' + image.css("a::attr(href)").extract_first()]
+        for div in response.css("div.art"):
+            url = str(div.css("a::attr(href)").extract_first())
+            datetime = str(div.css("span.time::attr(datetime)").extract_first())
 
-            yield item
+            yield {
+                'url': url,
+                'datetime': datetime
+
+            }

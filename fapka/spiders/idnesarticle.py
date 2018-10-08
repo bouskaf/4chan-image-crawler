@@ -21,9 +21,12 @@ class ToScrapeCSSSpider(scrapy.Spider):
 
         opener = response.css("div.opener").extract_first()
         text = response.css("#art-text").extract_first()
-        disc_nr = response.css("#moot-linkin").extract_first()
+        disc_nr = response.css("#moot-linkin span").extract_first()
         disc_span = response.css("#moot-linkin")
+
+
         disc_url = disc_span.css("a::attr(href)").extract_first()
+        disc_url = "https://zpravy.idnes.cz" + disc_url + "&razeni=time"
 
 
 
@@ -36,6 +39,7 @@ class ToScrapeCSSSpider(scrapy.Spider):
 
 
         opener_text = BeautifulSoup(opener).get_text().strip()
+        opener_text = str(opener_text)
         text_text = BeautifulSoup(text).get_text().strip()
 
         authors_text = BeautifulSoup(authors).get_text().strip()
