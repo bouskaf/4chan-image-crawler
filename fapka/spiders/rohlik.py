@@ -12,6 +12,24 @@ products = db['products']
 
 class ToScrapeCSSSpider(scrapy.Spider):
     name = "rohlik"
+
+    categories = [
+        "https://www.rohlik.cz/c300101000-pekarna-a-cukrarna",
+        "https://www.rohlik.cz/c300102000-ovoce-a-zelenina",
+        "https://www.rohlik.cz/c300103000-maso-a-ryby",
+        "https://www.rohlik.cz/c300104000-uzeniny-a-lahudky",
+        "https://www.rohlik.cz/c300105000-mlecne-a-chlazene",
+        "https://www.rohlik.cz/c300106000-trvanlive",
+        "https://www.rohlik.cz/c300107000-mrazene",
+        "https://www.rohlik.cz/c300108000-napoje",
+        "https://www.rohlik.cz/c300112393-specialni-vyziva",
+        "https://www.rohlik.cz/c300110000-dite",
+        "https://www.rohlik.cz/c300109000-drogerie-a-kosmetika",
+        "https://www.rohlik.cz/c300111000-domacnost-a-kancelar",
+        "https://www.rohlik.cz/c300112000-zvire",
+        "https://www.rohlik.cz/c300112985-lekarna"
+    ]
+
     start_urls = [
         'https://www.rohlik.cz/c300101000-pekarna-a-cukrarna'
     ]
