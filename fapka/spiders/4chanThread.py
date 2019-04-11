@@ -7,7 +7,7 @@ from fapka.items import FapkaItem
 class ToScrapeCSSSpider(scrapy.Spider):
     name = "4chan_thread"
     start_urls = [
-        'http://boards.4chan.org/s/thread/18448202',
+        'http://boards.4chan.org/s/thread/18756446',
     ]
 
     def start_requests(self):
