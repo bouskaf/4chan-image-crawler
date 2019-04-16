@@ -5,24 +5,24 @@ from bs4 import BeautifulSoup
 import datetime
 from pymongo import MongoClient
 
-client = MongoClient('localhost', 27017)
-db = client['idnesarchiv']
-articles = db['articles']
-articles_full = db['articles_full']
-
-
-start_urls = []
-for article in articles.find({}):
-    start_urls.append(article["url"])
+# client = MongoClient('localhost', 27017)
+# db = client['idnesarchiv']
+# articles = db['articles']
+# articles_full = db['articles_full']
+#
+#
+# start_urls = []
+# for article in articles.find({}):
+#     start_urls.append(article["url"])
 
 
 class ToScrapeCSSSpider(scrapy.Spider):
     name = "idnesarticle"
-    # start_urls = [
-    #     'https://zpravy.idnes.cz/stocena-auta-tachometr-pretoceny-ojeta-auta-podvod-fxm-/domaci.aspx?c=A180920_094019_domaci_kuce'
-    # ]
+    start_urls = [
+        'https://zpravy.idnes.cz/stocena-auta-tachometr-pretoceny-ojeta-auta-podvod-fxm-/domaci.aspx?c=A180920_094019_domaci_kuce'
+    ]
 
-    start_urls = start_urls[1:500]
+    # start_urls = start_urls[1:500]
 
     def start_requests(self):
         for url in self.start_urls:
@@ -48,20 +48,20 @@ class ToScrapeCSSSpider(scrapy.Spider):
         disc_nr = int("".join(map(str, disc_nr)))
 
         opener_text = BeautifulSoup(opener).get_text().strip()
-        opener_text = str(opener_text)
+        # opener_text = str(opener_text)
         text_text = BeautifulSoup(text).get_text().strip()
 
         authors_text = BeautifulSoup(authors).get_text().strip()
 
-        article_full = {
-            'opener': opener_text,
-            'text': text_text,
-            'authors': authors_text,
-            'disc_nr': disc_nr,
-            'discussion_url': disc_url,
-            "created_at": datetime.datetime.utcnow()
-        }
-        articles_full.insert_one(article_full)
+        # article_full = {
+        #     'opener': opener_text,
+        #     'text': text_text,
+        #     'authors': authors_text,
+        #     'disc_nr': disc_nr,
+        #     'discussion_url': disc_url,
+        #     "created_at": datetime.datetime.utcnow()
+        # }
+        # articles_full.insert_one(article_full)
 
         yield {
             'opener': opener_text,
